@@ -9,6 +9,7 @@ import LoginPage from '../pages/auth/LoginPage';
 import HomePage from '../pages/home/HomePage';
 
 // Interview
+import InterviewLayout from '../components/layout/InterviewLayout';
 import InterviewHomePage from '../pages/interview/InterviewHomePage';
 import InterviewStartPage from '../pages/interview/InterviewStartPage';
 import InterviewIcebreakingPage from '../pages/interview/InterviewIcebreakingPage';
@@ -17,6 +18,7 @@ import InterviewAnalysisPage from '../pages/interview/InterviewAnalysisPage';
 import InterviewResultPage from '../pages/interview/InterviewResultPage';
 
 // Essay
+import EssayLayout from '../components/layout/EssayLayout';
 import EssayHomePage from '../pages/essay/EssayHomePage';
 import EssaySetupPage from '../pages/essay/EssaySetupPage';
 // import EssayJobSelectPage from '../pages/essay/EssayJobSelectPage';
@@ -46,28 +48,38 @@ export default function Router() {
         <Route path="/signup" element={<SignupPage />} />
 
         {/* Interview Flow */}
-        <Route path="/interview" element={<InterviewHomePage />} />
-        <Route path="/interview/start" element={<InterviewStartPage />} />
-        <Route
-          path="/interview/icebreaking"
-          element={<InterviewIcebreakingPage />}
-        />
-        <Route path="/interview/progress" element={<InterviewProgressPage />} />
-        <Route path="/interview/analysis" element={<InterviewAnalysisPage />} />
-        <Route path="/interview/result" element={<InterviewResultPage />} />
+        <Route element={<InterviewLayout />}>
+          <Route path="/interview" element={<InterviewHomePage />} />
+          <Route path="/interview/start" element={<InterviewStartPage />} />
+          <Route
+            path="/interview/icebreaking"
+            element={<InterviewIcebreakingPage />}
+          />
+          <Route
+            path="/interview/progress"
+            element={<InterviewProgressPage />}
+          />
+          <Route
+            path="/interview/analysis"
+            element={<InterviewAnalysisPage />}
+          />
+          <Route path="/interview/result" element={<InterviewResultPage />} />
+        </Route>
 
         {/* Essay Flow */}
-        <Route path="/essay" element={<EssayHomePage />} />
-        <Route path="/essay/job" element={<EssaySetupPage step="job" />} />
-        <Route path="/essay/item" element={<EssaySetupPage step="item" />} />
-        <Route path="/essay/card" element={<EssaySetupPage step="card" />} />
+        <Route element={<EssayLayout />}>
+          <Route path="/essay" element={<EssayHomePage />} />
+          <Route path="/essay/job" element={<EssaySetupPage step="job" />} />
+          <Route path="/essay/item" element={<EssaySetupPage step="item" />} />
+          <Route path="/essay/card" element={<EssaySetupPage step="card" />} />
 
-        {/* <Route path="/essay/job" element={<EssayJobSelectPage />} />
+          {/* <Route path="/essay/job" element={<EssayJobSelectPage />} />
         <Route path="/essay/item" element={<EssayQuestionSelectPage />} />
         <Route path="/essay/card" element={<EssayCardSelectPage />} /> */}
-        <Route path="/essay/create" element={<EssayCreatePage />} />
-        <Route path="/essay/edit/:essayId" element={<EssayEditPage />} />
-        <Route path="/essay/:essayId" element={<EssayDetailPage />} />
+          <Route path="/essay/create" element={<EssayCreatePage />} />
+          <Route path="/essay/edit/:essayId" element={<EssayEditPage />} />
+          <Route path="/essay/:essayId" element={<EssayDetailPage />} />
+        </Route>
 
         {/* Settings (Records) */}
         <Route path="/settings" element={<SettingsHome />} />

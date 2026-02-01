@@ -1,6 +1,16 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
-const SettingsHome: React.FC = () => {
+export default function SettingsHome() {
+  // 로그아웃 함수 (임시 구현)
+  const handelLogout = () => {
+    console.log('Logout clicked');
+  };
+
+  // 회원 탈퇴 함수 (임시 구현)
+  const deleteAccount = () => {
+    console.log('Delete account clicked');
+  };
+
   return (
     <div className="flex h-screen w-screen bg-[#F9F9F7] overflow-hidden">
       <div className="flex-1 flex flex-col p-8 sm:p-12 overflow-y-auto">
@@ -27,7 +37,9 @@ const SettingsHome: React.FC = () => {
                     <p className="text-[#8E8E93] text-sm">user@example.com</p>
                   </div>
                 </div>
-                <button className="w-full p-4 text-left text-[#FF6B6B] hover:bg-[#FFF5F5] transition-colors text-sm flex items-center gap-2">
+                <button
+                  onClick={handelLogout}
+                  className="w-full p-4 text-left text-[#FF6B6B] hover:bg-[#FFF5F5] transition-colors text-sm flex items-center gap-2 cursor-pointer">
                   → 로그아웃
                 </button>
               </div>
@@ -39,18 +51,22 @@ const SettingsHome: React.FC = () => {
                 내 기록
               </h3>
               <div className="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
-                <button className="w-full p-4 flex items-center justify-between hover:bg-[#FAFAFA] transition-colors border-b border-[#E5E5E5]">
+                <Link
+                  to="/settings/experiences"
+                  className="w-full p-4 flex items-center justify-between hover:bg-[#FAFAFA] transition-colors border-b border-[#E5E5E5]">
                   <div className="flex items-center gap-3">
                     <span className="text-[#4A4A4A]">
                       저장된 경험 카드 목록
                     </span>
                   </div>
-                </button>
-                <button className="w-full p-4 flex items-center justify-between hover:bg-[#FAFAFA] transition-colors">
+                </Link>
+                <Link
+                  to="/settings/essays"
+                  className="w-full p-4 flex items-center justify-between hover:bg-[#FAFAFA] transition-colors">
                   <div className="flex items-center gap-3">
                     <span className="text-[#4A4A4A]">생성한 자소서 목록</span>
                   </div>
-                </button>
+                </Link>
               </div>
             </section>
 
@@ -60,8 +76,10 @@ const SettingsHome: React.FC = () => {
                 기타
               </h3>
               <div className="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
-                <button className="w-full p-4 flex items-center justify-between hover:bg-[#FAFAFA] transition-colors">
-                  <span className="text-[#4A4A4A]">회원 탈퇴</span>
+                <button
+                  className="w-full p-4 flex items-center justify-between text-text-secondary cursor-pointer  hover:text-text-primary transition-colors"
+                  onClick={deleteAccount}>
+                  회원 탈퇴
                 </button>
               </div>
             </section>
@@ -70,6 +88,4 @@ const SettingsHome: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default SettingsHome;
+}
