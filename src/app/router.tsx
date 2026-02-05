@@ -21,9 +21,6 @@ import InterviewResultPage from '../pages/interview/InterviewResultPage';
 import EssayLayout from '../components/layout/EssayLayout';
 import EssayHomePage from '../pages/essay/EssayHomePage';
 import EssaySetupPage from '../pages/essay/EssaySetupPage';
-// import EssayJobSelectPage from '../pages/essay/EssayJobSelectPage';
-// import EssayQuestionSelectPage from '../pages/essay/EssayQuestionSelectPage';
-// import EssayCardSelectPage from '../pages/essay/EssayCardSelectPage';
 import EssayCreatePage from '../pages/essay/EssayCreatePage';
 import EssayEditPage from '../pages/essay/EssayEditPage';
 import EssayDetailPage from '../pages/essay/EssayDetailPage';
@@ -73,15 +70,12 @@ export default function Router() {
           <Route path="/essay/item" element={<EssaySetupPage step="item" />} />
           <Route path="/essay/card" element={<EssaySetupPage step="card" />} />
 
-          {/* <Route path="/essay/job" element={<EssayJobSelectPage />} />
-        <Route path="/essay/item" element={<EssayQuestionSelectPage />} />
-        <Route path="/essay/card" element={<EssayCardSelectPage />} /> */}
           <Route path="/essay/create" element={<EssayCreatePage />} />
-          <Route path="/essay/edit/:essayId" element={<EssayEditPage />} />
           <Route path="/essay/:essayId" element={<EssayDetailPage />} />
+          <Route path="/essay/edit/:essayId" element={<EssayEditPage />} />
         </Route>
 
-        {/* Settings (Records) */}
+        {/* Settings */}
         <Route path="/settings" element={<SettingsHome />} />
         <Route path="/settings/experiences" element={<ExperienceListPage />} />
         <Route

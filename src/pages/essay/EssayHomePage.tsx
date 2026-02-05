@@ -97,11 +97,13 @@ export default function EssayHomePage() {
             </div>
           </Link>
           {/* 보조 액션 (Secondary) */}
-          <Link
-            to={hasCards ? '/interview' : '/essay/job'}
-            className="px-6 py-3.5 text-gray-400 hover:text-gray-600 transition-colors text-[15px] font-medium">
-            {hasCards ? '인터뷰 더 하기' : '바로 작성하기'}
-          </Link>
+          {hasCards && (
+            <Link
+              to="/interview"
+              className="px-6 py-3.5 text-gray-400 hover:text-gray-600 transition-colors text-[15px] font-medium">
+              인터뷰 더 하기
+            </Link>
+          )}
         </div>
       </div>
     </section>
