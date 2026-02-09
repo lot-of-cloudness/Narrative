@@ -5,11 +5,8 @@ export default function InterviewHomePage() {
     <section
       className="flex-1 flex items-center justify-center p-8"
       aria-label="인터뷰 시작 메인 섹션">
-      <div className="max-w-2xl w-full flex flex-col items-center text-center space-y-8 animate-fade-in">
+      <div className="max-w-2xl w-full flex flex-col items-center text-center space-y-8">
         <header className="space-y-4">
-          <p className="text-brand-sage font-semibold tracking-wide uppercase text-sm">
-            Experience Archiving
-          </p>
           <h2 className="text-3xl md:text-4xl font-serif text-gray-900 leading-tight">
             대화를 통해 <br /> 당신의 경험을 정리해보세요.
           </h2>

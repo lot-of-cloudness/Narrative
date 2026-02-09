@@ -23,15 +23,14 @@ export default function EssayHomePage() {
     <section
       className="flex-1 flex items-center justify-center p-8"
       aria-label="자기소개서 작성 메인 섹션">
-      <div className="max-w-2xl w-full flex flex-col items-center text-center space-y-8 animate-fade-in">
+      <div className="max-w-2xl w-full flex flex-col items-center text-center space-y-8">
         <header className="space-y-4">
           {hasCards ? (
             <>
               {/* 경험 카드가 있을 때 노출 */}
               <h2 className="text-3xl md:text-4xl font-serif text-gray-900 leading-tight">
-                총{' '}
-                <span className="text-brand-sage">{MOCK_CARDS.length}개</span>의
-                경험 카드가 준비되어 있어요!
+                총<span className="text-brand-sage">{MOCK_CARDS.length}개</span>
+                의 경험 카드가 준비되어 있어요!
               </h2>
               <p className="text-gray-500 text-lg max-w-md mx-auto font-sans leading-relaxed break-keep">
                 이제 이 소중한 재료들을 활용해서 <br />
@@ -41,12 +40,12 @@ export default function EssayHomePage() {
           ) : (
             <>
               {/* 경험카드가 없을 때 노출*/}
-              <h2 className="text-3xl md:text-4xl font-serif text-gray-900 leading-tight">
-                아직 정리된 경험 카드가 없네요
+              <h2 className="text-2xl md:text-4xl font-serif text-gray-900 leading-tight">
+                아직 기록된 이야기가 없어요.
               </h2>
               <p className="text-gray-500 text-lg max-w-md mx-auto font-sans leading-relaxed break-keep">
-                자소서를 쓰기 위해서는 재료가 필요합니다. <br />
-                가벼운 인터뷰로 경험을 먼저 정리해보시는 건 어떨까요?
+                괜찮아요, 첫 질문은 우리가 준비했어요. <br />
+                가벼운 인터뷰로 경험을 먼저 정리해볼까요?
               </p>
             </>
           )}

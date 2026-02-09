@@ -1,4 +1,7 @@
 import React from 'react';
+import Input from '../../components/ui/Input';
+import { Button } from '../../components/ui/Button';
+import { Link } from 'react-router-dom';
 
 export const LoginPage: React.FC = () => {
   return (
@@ -13,63 +16,47 @@ export const LoginPage: React.FC = () => {
 
         {/* 로그인 폼 */}
         <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-          <div className="space-y-2">
-            <label
-              className="block text-sm font-semibold text-text-primary ml-1"
-              htmlFor="email">
-              이메일 주소
-            </label>
-            <input
-              className="w-full px-4 py-3.5 rounded-xl border border-divider bg-white focus:ring-1 focus:ring-brand-sage focus:border-brand-sage outline-none transition-all text-sm text-text-primary placeholder:text-text-disabled"
-              id="email"
-              placeholder="name@example.com"
-              type="email"
-              autoComplete="email"
-              required
-            />
-          </div>
+          <Input
+            id="email"
+            label="이메일 주소"
+            placeholder="name@example.com"
+            type="email"
+            autoComplete="email"
+            required
+          />
 
-          <div className="space-y-2">
-            <label
-              className="block text-sm font-semibold text-text-primary ml-1"
-              htmlFor="password">
-              비밀번호
-            </label>
-            <input
-              className="w-full px-4 py-3.5 rounded-xl border border-divider bg-white focus:ring-1 focus:ring-brand-sage focus:border-brand-sage outline-none transition-all text-sm text-text-primary placeholder:text-text-disabled"
-              id="password"
-              placeholder="••••••••"
-              type="password"
-              autoComplete="current-password"
-              required
-            />
-          </div>
+          <Input
+            id="password"
+            label="비밀번호"
+            placeholder="••••••••"
+            type="password"
+            autoComplete="current-password"
+            required
+          />
 
           <div className="pt-4">
-            <button
-              className="w-full h-14 bg-brand-sage text-white font-bold rounded-full shadow-button hover:bg-brand-sage/90 active:scale-[0.98] transition-all flex items-center justify-center cursor-pointer"
-              type="submit">
-              로그인하기
-            </button>
+            <Button type="submit">로그인하기</Button>
           </div>
         </form>
 
         {/* 하단 링크 네비게이션 */}
         <footer className="mt-10 space-y-4 text-center">
           <div>
-            <a
-              className="text-sm text-text-secondary hover:text-text-primary transition-colors cursor-pointer underline-offset-4 hover:underline"
-              href="/forgot-password">
+            <Link
+              to="/forgot-password"
+              className="text-sm text-text-secondary hover:text-text-primary
+              transition-colors cursor-pointer underline-offset-4
+              hover:underline">
               비밀번호를 잊으셨나요?
-            </a>
+            </Link>
           </div>
           <div className="text-sm text-text-secondary">
             아직 회원이 아니신가요?
-            <a
-              className="ml-2 font-bold text-text-primary hover:text-brand-sage underline underline-offset-4 decoration-divider hover:decoration-brand-sage transition-all cursor-pointer"
-              href="/signup">
+            <Link
+              to="/signup"
+              className="ml-2 font-bold text-text-primary hover:text-brand-sage underline underline-offset-4 decoration-divider hover:decoration-brand-sage transition-all cursor-pointer">
               회원가입하기
-            </a>
+            </Link>
           </div>
         </footer>
       </div>

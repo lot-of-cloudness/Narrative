@@ -6,10 +6,10 @@ export default function HomePage() {
       {/* 타이틀 섹션 */}
       <div className="animate-fade-in mb-8 text-center transition-opacity duration-1000">
         <p className="mb-3 text-[15px] font-normal text-text-secondary font-sans">
-          당신의 경험을 대화로 정리하는 공간
-        </p>
-        <p className="text-[19px] leading-relaxed text-text-primary font-serif">
           지금 상태 그대로 시작해도 괜찮아요
+        </p>
+        <p className="text-2xl leading-relaxed text-text-primary font-serif">
+          말로 설명하지 못했던 시간들을 <br /> 천천히 정리해보는 공간
         </p>
       </div>
 
@@ -26,9 +26,6 @@ export default function HomePage() {
             대화를 통해 당신의 이야기를 정리해보세요.
           </p>
         </div>
-
-        {/* 구분선 (선택사항 - 시각적 분리가 필요하다면 사용) */}
-        {/* <div className="w-full border-t border-gray-100"></div> */}
 
         {/* 자기소개서 생성 링크 그룹 */}
         <div className="flex flex-col items-center gap-2">
