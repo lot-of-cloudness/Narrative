@@ -1,7 +1,7 @@
-import React from 'react';
-import Input from '../../components/ui/Input';
-import { Button } from '../../components/ui/Button';
-import { Link } from 'react-router-dom';
+import React from "react";
+import Input from "../../components/ui/Input";
+import { Button } from "../../components/ui/Button";
+import { Link } from "react-router-dom";
 
 export const LoginPage: React.FC = () => {
   return (
@@ -21,7 +21,6 @@ export const LoginPage: React.FC = () => {
             label="이메일 주소"
             placeholder="name@example.com"
             type="email"
-            autoComplete="email"
             required
           />
 
@@ -30,7 +29,6 @@ export const LoginPage: React.FC = () => {
             label="비밀번호"
             placeholder="••••••••"
             type="password"
-            autoComplete="current-password"
             required
           />
 
@@ -46,7 +44,8 @@ export const LoginPage: React.FC = () => {
               to="/forgot-password"
               className="text-sm text-text-secondary hover:text-text-primary
               transition-colors cursor-pointer underline-offset-4
-              hover:underline">
+              hover:underline"
+            >
               비밀번호를 잊으셨나요?
             </Link>
           </div>
@@ -54,7 +53,8 @@ export const LoginPage: React.FC = () => {
             아직 회원이 아니신가요?
             <Link
               to="/signup"
-              className="ml-2 font-bold text-text-primary hover:text-brand-sage underline underline-offset-4 decoration-divider hover:decoration-brand-sage transition-all cursor-pointer">
+              className="ml-2 font-bold text-text-primary hover:text-brand-sage underline underline-offset-4 decoration-divider hover:decoration-brand-sage transition-all cursor-pointer"
+            >
               회원가입하기
             </Link>
           </div>
