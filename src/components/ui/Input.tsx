@@ -4,18 +4,21 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
 }
 
+/**
+ * 공통 Input 컴포넌트
+ * - label 지원
+ * - 모든 input 속성(props) 전달 가능
+ * - 로그인 / 회원가입에서 재사용
+ */
 export default function Input({ label, ...props }: InputProps) {
   return (
-    <label className="flex flex-col gap-1 text-sm">
-      {label && (
-        <span className="block text-sm font-semibold text-text-primary ml-1">
-          {label}
-        </span>
-      )}
+    <div className="flex flex-col gap-1">
+      {label && <label className="text-sm font-medium">{label}</label>}
+
       <input
+        className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
         {...props}
-        className="w-full px-4 py-3.5 rounded-xl border border-divider bg-white focus:ring-1 focus:ring-brand-sage focus:border-brand-sage outline-none transition-all text-sm text-text-primary placeholder:text-text-disabled"
       />
-    </label>
+    </div>
   );
 }

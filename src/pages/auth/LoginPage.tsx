@@ -1,9 +1,31 @@
-import React from "react";
-import Input from "../../components/ui/Input";
-import { Button } from "../../components/ui/Button";
-import { Link } from "react-router-dom";
+import Input from '../../components/ui/Input';
+import { Button } from '../../components/ui/Button';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../../store/auth.store';
+import { useState } from 'react';
 
-export const LoginPage: React.FC = () => {
+export const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+  const login = useAuthStore((state) => state.login);
+
+  const handleLogin = () => {
+    console.log(`로그인! 메일 : ${email}`);
+
+    // 유효성 검증 (이메일, 비밀번호 체크)
+
+    if (!email) return alert('이메일을 입력해주세요.');
+    if (!password) return alert('비밀번호를 입력해 주세요.');
+
+    // 비밀번호 틀렸을 때
+
+    // 로그인 처리
+    login(email);
+    navigate('/'); // 로그인 성공 후 홈으로 이동
+  };
+
   return (
     <main className="min-h-screen w-full flex flex-col items-center justify-center p-6 bg-bg-base">
       <div className="w-full max-w-110 bg-bg-sub rounded-2xl shadow-box border border-divider p-10 md:p-12 relative">
@@ -21,6 +43,8 @@ export const LoginPage: React.FC = () => {
             label="이메일 주소"
             placeholder="name@example.com"
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
 
@@ -29,12 +53,14 @@ export const LoginPage: React.FC = () => {
             label="비밀번호"
             placeholder="••••••••"
             type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
 
-          <div className="pt-4">
-            <Button type="submit">로그인하기</Button>
-          </div>
+          <Button type="submit" onClick={handleLogin}>
+            로그인하기
+          </Button>
         </form>
 
         {/* 하단 링크 네비게이션 */}
@@ -44,8 +70,7 @@ export const LoginPage: React.FC = () => {
               to="/forgot-password"
               className="text-sm text-text-secondary hover:text-text-primary
               transition-colors cursor-pointer underline-offset-4
-              hover:underline"
-            >
+              hover:underline">
               비밀번호를 잊으셨나요?
             </Link>
           </div>
@@ -53,8 +78,7 @@ export const LoginPage: React.FC = () => {
             아직 회원이 아니신가요?
             <Link
               to="/signup"
-              className="ml-2 font-bold text-text-primary hover:text-brand-sage underline underline-offset-4 decoration-divider hover:decoration-brand-sage transition-all cursor-pointer"
-            >
+              className="ml-2 font-bold text-text-primary hover:text-brand-sage underline underline-offset-4 decoration-divider hover:decoration-brand-sage transition-all cursor-pointer">
               회원가입하기
             </Link>
           </div>

@@ -19,12 +19,7 @@ export default function InterviewHomePage() {
         <Link
           to="/interview/start"
           className="group relative flex h-16 w-80 items-center justify-center overflow-hidden rounded-full bg-brand-sage px-8 text-lg font-bold text-white shadow-xl transition-all hover:bg-brand-clay hover:scale-[1.02] active:scale-95">
-          <span>+ 새 인터뷰 시작하기</span>
-          <div
-            className="absolute inset-0 flex h-full w-full justify-center transform-[skew(-12deg)_translateX(-100%)] group-hover:duration-1000 group-hover:transform-[skew(-12deg)_translateX(100%)]"
-            aria-hidden="true">
-            <div className="relative h-full w-8 bg-white/20" />
-          </div>
+          + 새 인터뷰 시작하기
         </Link>
       </div>
     </section>

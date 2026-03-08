@@ -1,14 +1,15 @@
 // 로그인한 사용자 정보를 localStorage에 저장하기 위한 key
-const AUTH_KEY = 'mock_auth_user';
+const AUTH_KEY = 'auth_user';
 
 // 로그인 성공 시 호출
 export const saveAuthUser = (user: { email: string }) => {
+  // 로그인 시 사용자 정보를 localStorage에 저장
   // localStorage에는 문자열만 저장 가능하므로 JSON.stringify 사용
   // Mock이라서 email만 저장
   localStorage.setItem(AUTH_KEY, JSON.stringify(user));
 };
 
-// 현재 로그인한 사용자 정보 가져오기
+// 현재 로그인한 사용자 정보 가져오기 (localStorage에서)
 export const getAuthUser = () => {
   const userData = localStorage.getItem(AUTH_KEY);
   if (!userData) return null;
