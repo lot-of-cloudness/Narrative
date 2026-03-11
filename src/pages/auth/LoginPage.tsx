@@ -1,29 +1,33 @@
-import Input from '../../components/ui/Input';
-import { Button } from '../../components/ui/Button';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../../store/auth.store';
-import { useState } from 'react';
+import Input from "../../components/ui/Input";
+import { Button } from "../../components/ui/Button";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../store/auth.store";
+import { useState } from "react";
 
 export const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
   const login = useAuthStore((state) => state.login);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // 로그인 성공 후 이동할 경로 (기본값은 홈)
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = () => {
     console.log(`로그인! 메일 : ${email}`);
 
     // 유효성 검증 (이메일, 비밀번호 체크)
 
-    if (!email) return alert('이메일을 입력해주세요.');
-    if (!password) return alert('비밀번호를 입력해 주세요.');
+    if (!email) return alert("이메일을 입력해주세요.");
+    if (!password) return alert("비밀번호를 입력해 주세요.");
 
     // 비밀번호 틀렸을 때
 
     // 로그인 처리
     login(email);
-    navigate('/'); // 로그인 성공 후 홈으로 이동
+    navigate(from, { replace: true }); // 로그인 성공 후 지정된 경로로 이동
   };
 
   return (
@@ -70,7 +74,8 @@ export const LoginPage = () => {
               to="/forgot-password"
               className="text-sm text-text-secondary hover:text-text-primary
               transition-colors cursor-pointer underline-offset-4
-              hover:underline">
+              hover:underline"
+            >
               비밀번호를 잊으셨나요?
             </Link>
           </div>
@@ -78,7 +83,8 @@ export const LoginPage = () => {
             아직 회원이 아니신가요?
             <Link
               to="/signup"
-              className="ml-2 font-bold text-text-primary hover:text-brand-sage underline underline-offset-4 decoration-divider hover:decoration-brand-sage transition-all cursor-pointer">
+              className="ml-2 font-bold text-text-primary hover:text-brand-sage underline underline-offset-4 decoration-divider hover:decoration-brand-sage transition-all cursor-pointer"
+            >
               회원가입하기
             </Link>
           </div>

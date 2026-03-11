@@ -1,49 +1,51 @@
 // import type React from 'react';
-import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
-import PageLayout from '../components/layout/PageLayout';
+import { Routes, Route, Navigate, Outlet, useLocation } from "react-router-dom";
+import PageLayout from "../components/layout/PageLayout";
 
 // Auth
-import SignupPage from '../pages/auth/SignupPage';
-import LoginPage from '../pages/auth/LoginPage';
+import SignupPage from "../pages/auth/SignupPage";
+import LoginPage from "../pages/auth/LoginPage";
 
 // Home
-import HomePage from '../pages/home/HomePage';
+import HomePage from "../pages/home/HomePage";
 
 // Interview
-import InterviewLayout from '../components/layout/InterviewLayout';
-import InterviewHomePage from '../pages/interview/InterviewHomePage';
-import InterviewStartPage from '../pages/interview/InterviewStartPage';
-import InterviewIcebreakingPage from '../pages/interview/InterviewIcebreakingPage';
-import InterviewProgressPage from '../pages/interview/InterviewProgressPage';
-import InterviewAnalysisPage from '../pages/interview/InterviewAnalysisPage';
-import InterviewResultPage from '../pages/interview/InterviewResultPage';
+import InterviewLayout from "../components/layout/InterviewLayout";
+import InterviewHomePage from "../pages/interview/InterviewHomePage";
+import InterviewStartPage from "../pages/interview/InterviewStartPage";
+import InterviewIcebreakingPage from "../pages/interview/InterviewIcebreakingPage";
+import InterviewProgressPage from "../pages/interview/InterviewProgressPage";
+import InterviewAnalysisPage from "../pages/interview/InterviewAnalysisPage";
+import InterviewResultPage from "../pages/interview/InterviewResultPage";
 
 // Essay
-import EssayLayout from '../components/layout/EssayLayout';
-import EssayHomePage from '../pages/essay/EssayHomePage';
-import EssaySetupPage from '../pages/essay/EssaySetupPage';
-import EssayCreatePage from '../pages/essay/EssayCreatePage';
-import EssayEditPage from '../pages/essay/EssayEditPage';
-import EssayDetailPage from '../pages/essay/EssayDetailPage';
+import EssayLayout from "../components/layout/EssayLayout";
+import EssayHomePage from "../pages/essay/EssayHomePage";
+import EssaySetupPage from "../pages/essay/EssaySetupPage";
+import EssayCreatePage from "../pages/essay/EssayCreatePage";
+import EssayEditPage from "../pages/essay/EssayEditPage";
+import EssayDetailPage from "../pages/essay/EssayDetailPage";
 
 // Settings
-import SettingsHome from '../pages/settings/SettingsHome';
-import EssayHistoryPage from '../pages/settings/EssayHistoryPage';
-import ExperienceListPage from '../pages/settings/ExperienceListPage';
-import ExperienceDetailPage from '../pages/settings/ExperienceDetailPage';
-import EssayHistoryDetailPage from '../pages/settings/EssayHistoryDetailPage';
+import SettingsHome from "../pages/settings/SettingsHome";
+import EssayHistoryPage from "../pages/settings/EssayHistoryPage";
+import ExperienceListPage from "../pages/settings/ExperienceListPage";
+import ExperienceDetailPage from "../pages/settings/ExperienceDetailPage";
+import EssayHistoryDetailPage from "../pages/settings/EssayHistoryDetailPage";
 
 // store
-import { getAuthUser } from '../utils/storage';
+import { getAuthUser } from "../utils/storage";
 
 const ProtectedRoute = () => {
+  const location = useLocation();
+
   // 로그인 여부 체크
   const isLoggedIn = getAuthUser();
-  console.log('로그인 여부' + !!isLoggedIn);
+  console.log("로그인 여부" + !!isLoggedIn);
 
   // 로그인 안했으면 로그인 페이지로 이동
   if (!isLoggedIn) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" replace state={{ from: location }} />;
   }
   return <Outlet />; // 로그인 했으면 요청한 페이지로 이동
 };
